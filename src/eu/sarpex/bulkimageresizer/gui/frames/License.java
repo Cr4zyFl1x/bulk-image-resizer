@@ -1,5 +1,7 @@
 package eu.sarpex.bulkimageresizer.gui.frames;
 
+import eu.cr4zyfl1x.logger.LogType;
+import eu.cr4zyfl1x.logger.Logger;
 import eu.sarpex.bulkimageresizer.gui.GUIController;
 import eu.sarpex.bulkimageresizer.gui.frametype.AppFrame;
 
@@ -9,25 +11,30 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 
-public class Licenses extends AppFrame {
-    private JPanel root;
+public class License extends AppFrame {
     private JTextPane licenseTextpane;
     private JButton closeButton;
-    private JScrollPane licenseScrollPane;
+    private JPanel root;
 
-    public Licenses (GUIController controller)
+    public License(GUIController controller)
     {
-        super(controller, buildFrameTitle("Licenses"), new Dimension(700, 600), true);
+        super(controller, buildFrameTitle("License"), new Dimension(700, 600), true);
         init();
         setLicense();
-        addActionListeners();
+        setActionListeners();
     }
+
 
     @Override
     protected void init()
     {
         add(root);
         setResizable(false);
+    }
+
+    private void setActionListeners()
+    {
+        closeButton.addActionListener(e -> dispose());
     }
 
     private void setLicense()
@@ -39,13 +46,11 @@ public class Licenses extends AppFrame {
                 licenseTextpane.setText(licenseTextpane.getText() + line + "\n");
                 line = reader.readLine();
             }
+            licenseTextpane.setCaretPosition(0);
         } catch (IOException e) {
-            licenseTextpane.setText("Licenses could not be loaded!");
+            licenseTextpane.setText("License could not be loaded!");
+            Logger.log(LogType.ERROR, "License could not be loaded!");
         }
     }
 
-    private void addActionListeners()
-    {
-        closeButton.addActionListener(e -> dispose());
-    }
 }

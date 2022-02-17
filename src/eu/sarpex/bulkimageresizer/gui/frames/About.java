@@ -2,15 +2,12 @@ package eu.sarpex.bulkimageresizer.gui.frames;
 
 import eu.cr4zyfl1x.logger.LogType;
 import eu.cr4zyfl1x.logger.Logger;
-import eu.sarpex.bulkimageresizer.BulkImageResizer;
 import eu.sarpex.bulkimageresizer.gui.GUIController;
 import eu.sarpex.bulkimageresizer.gui.frametype.AppFrame;
 
 import javax.swing.*;
 
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.io.IOException;
 import java.net.URI;
 import java.net.URISyntaxException;
@@ -20,9 +17,10 @@ import static eu.sarpex.bulkimageresizer.storage.StaticProperties.*;
 public class About extends AppFrame {
     private JPanel root;
     private JButton gitHubButton;
-    private JButton licensesButton;
+    private JButton thirdPartyButton;
     private JButton closeButton;
     private JLabel appVersionLabel;
+    private JButton licenseButton;
 
 
     public About(GUIController controller)
@@ -37,7 +35,6 @@ public class About extends AppFrame {
     {
         add(root);
         setResizable(false);
-
         appVersionLabel.setText(APPNAME + " - v" + VERSION);
 
     }
@@ -55,7 +52,10 @@ public class About extends AppFrame {
             }
         });
 
-        licensesButton.setName("button_licenses");
-        licensesButton.addActionListener(controller);
+        thirdPartyButton.setName("button_thirdparty");
+        thirdPartyButton.addActionListener(controller);
+
+        licenseButton.setName("button_license");
+        licenseButton.addActionListener(controller);
     }
 }

@@ -17,6 +17,7 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 
+import static eu.sarpex.bulkimageresizer.storage.StaticProperties.APPNAME;
 import static eu.sarpex.bulkimageresizer.storage.StaticProperties.DEFAULT_DIMENSION;
 
 public class ResizeInterface extends AppFrame {
@@ -30,6 +31,7 @@ public class ResizeInterface extends AppFrame {
     private JTextField pixelsTextfield;
     private JCheckBox keepTransparencyCheckbox;
     private JButton aboutButton;
+    private JLabel appnameLabel;
 
     protected final int PIXEL_SYNTAX_OK = 0;
     protected final int PIXEL_SYNTAX_ERROR = 1;
@@ -55,11 +57,12 @@ public class ResizeInterface extends AppFrame {
         pack();
         setVisible(true);
         setResizable(false);
+        appnameLabel.setText(APPNAME);
     }
 
     private void setChooserConfig()
     {
-        FileFilter fileFilter = new FileNameExtensionFilter("PNG-Image", "png");
+        FileFilter fileFilter = new FileNameExtensionFilter("Image files", "png");
 
         openImageChooser.setDialogTitle("Choose image ...");
         openImageChooser.setFileFilter(fileFilter);
@@ -106,6 +109,14 @@ public class ResizeInterface extends AppFrame {
         return getRawFilename(filename) + "_" + dimension + "x." + getFileExtension(filename);
     }
 
+    private void setProccessing(boolean proccessing)
+    {
+        selectImageButton.setEnabled(!proccessing);
+        selectSaveFolderButton.setEnabled(!proccessing);
+        convertButton.setEnabled(!proccessing);
+        pixelsTextfield.setEditable(!proccessing);
+    }
+
 
     protected void setActionListeners()
     {
@@ -134,6 +145,7 @@ public class ResizeInterface extends AppFrame {
                 case PIXEL_SYNTAX_ERROR -> JOptionPane.showMessageDialog(this, "The syntax of the targeted resolutions contains errors.\n\nSyntax: (int)pixel1, (int)pixel2, ..., (int)pixeln", buildFrameTitle("Error"), JOptionPane.ERROR_MESSAGE);
             }
             if (checkPixelInput() == PIXEL_SYNTAX_OK) {
+                setProccessing(true);
                 int[] pixels = getPixelsArray();
                 BufferedImage image;
                 for (int i = 0; i < pixels.length; i++) {
@@ -148,6 +160,7 @@ public class ResizeInterface extends AppFrame {
                         return;
                     }
                 }
+                setProccessing(false);
                 Logger.log(LogType.INFORMATION, "The image '" + openImageChooser.getSelectedFile().getName() + "' was successfully converted into the given resulutions.");
                 JOptionPane.showMessageDialog(this, "The image was successfully converted into the targeted resolutions.", buildFrameTitle("Conversion successful!"), JOptionPane.INFORMATION_MESSAGE);
             }

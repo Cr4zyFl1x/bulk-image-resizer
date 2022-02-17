@@ -3,9 +3,7 @@ package eu.sarpex.bulkimageresizer.gui;
 import eu.cr4zyfl1x.logger.LogType;
 import eu.cr4zyfl1x.logger.Logger;
 import eu.sarpex.bulkimageresizer.BulkImageResizer;
-import eu.sarpex.bulkimageresizer.gui.frames.About;
-import eu.sarpex.bulkimageresizer.gui.frames.Licenses;
-import eu.sarpex.bulkimageresizer.gui.frames.ResizeInterface;
+import eu.sarpex.bulkimageresizer.gui.frames.*;
 import eu.sarpex.bulkimageresizer.gui.frametype.AppFrame;
 
 import javax.swing.*;
@@ -20,7 +18,9 @@ public class GUIController implements ActionListener {
 
     private AppFrame resizeInterface;
     private AppFrame about;
-    private AppFrame licenses;
+    private AppFrame thirdparty;
+    private AppFrame license;
+    private AppFrame console;
 
     public GUIController(BulkImageResizer app)
     {
@@ -90,6 +90,12 @@ public class GUIController implements ActionListener {
         return false;
     }
 
+    public void startConsole()
+    {
+
+        console = new Console(this);
+    }
+
     @Override
     public void actionPerformed(ActionEvent e) {
         String name = ((Component) e.getSource()).getName();
@@ -99,11 +105,17 @@ public class GUIController implements ActionListener {
                     about = new About(this);
                 }
                 break;
-                case "button_licenses":
-                    if (!focusFrame(licenses)) {
+                case "button_thirdparty":
+                    if (!focusFrame(thirdparty)) {
                         about.dispose();
-                        licenses = new Licenses(this);
+                        thirdparty = new ThirdParty(this);
                     }
+                break;
+            case "button_license":
+                if (!focusFrame(license)) {
+                    about.dispose();
+                    license = new License(this);
+                }
                 break;
             default:
                 Logger.log(LogType.WARNING, "Invalid compnent name '"+ name +"'");
