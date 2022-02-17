@@ -45,4 +45,4 @@ The associated license for this software can be shown here:
 For license information of each library please take a look at [this file](https://github.com/Cr4zyFl1x/bulk-image-resizer/blob/master/resources/license/THIRD-PARTY) or visit the repositories of the used libraries.
 
 ## Bugs & Feature Requests
-Bugs & feature requests can be mentioned as an [issue](https://github.com/HEBK/wer-wird-millionaer/issues) and will be proccessed as soon as possible.
+Bugs & feature requests can be mentioned as an [issue](https://github.com/Cr4zyFl1x/bulk-image-resizer/issues) and will be proccessed as soon as possible.
