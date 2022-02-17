@@ -27,7 +27,7 @@ To install the software, please follow these steps:
 4. The program is now successfully installed on your computer.
 
 ### Java version
-If you want to compile the software manually from the source code files, please be aware that you need to meet the minimum requirements of the Java version. Moreover you need to consider the [third-party libraries](#thirdparty).
+If you want to compile the software manually from the source code files, please be aware that you need to meet the minimum requirements of the Java version. Moreover you need to consider the [third-party libraries](#third-party-libraries).
 To execute and compile this software you need at least **Java JDK 15**.
 
 ## Contributors
@@ -42,7 +42,7 @@ The associated license for this software can be shown here:
 - [Cr4zyFl1x's JavaLogger](https://github.com/Cr4zyFl1x/JavaLogger) - Version 1.1.0 or higher
 - [JetBrains Annotations](https://github.com/JetBrains/java-annotations) - Version 20.1.0
 
-For license information of each library please take a look at [this file]() or visit the repositories of the used libraries.
+For license information of each library please take a look at [this file](https://github.com/Cr4zyFl1x/bulk-image-resizer/blob/master/resources/license/THIRD-PARTY) or visit the repositories of the used libraries.
 
 ## Bugs & Feature Requests
 Bugs & feature requests can be mentioned as an [issue](https://github.com/HEBK/wer-wird-millionaer/issues) and will be proccessed as soon as possible.
